@@ -1,0 +1,37 @@
+<button class="btn btn-danger" (click)="getAllCat()">Get All Categories</button>
+<button class="btn btn-success ms-5" [routerLink]="['/newProduct']">New Product</button>
+<table class="table text-center mb-5">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Info</th>
+      <th scope="col">Image</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Cateogry Num</th>
+      <th scope="col">Date Now</th>
+      <th scope="col">Count</th>
+      <th scope="col">BUY</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of productListCat ; let i = index" [hidden]="item.Quantity==0" [ngClass]="{'bg-warning':item.Quantity == 1 , 'text-danger':item.Quantity == 1 , 'text-primary':item.Quantity > 1}">
+      <td>{{i+1}}</td>
+      <td>{{item.Name}}</td>
+      <td>{{item.Price|currency:'USD ': 'code'}}</td>
+      <td><button class="btn btn-primary" [routerLink]="['/products',item.ID]">Details</button></td>
+      <td><img width="20%" [src]="item.Img"></td>
+      <ng-container [ngSwitch]="item.Quantity">
+        <ng-container *ngSwitchCase="0">Out Of Stock</ng-container>
+        <ng-container *ngSwitchCase="1">Last Item</ng-container>
+        <ng-container *ngSwitchCase="2">Last Two Item</ng-container>
+        <ng-container *ngSwitchDefault>{{item.Quantity}}</ng-container>
+      </ng-container>
+      <td>{{item.CateogryID}}</td>
+      <td>{{dateNow|date:'mediumDate'}}</td>
+      <td><input type="number" name="count" #itemCount></td>
+      <td><button class="btn btn-success" (click)="increaseQuantity(item , itemCount.value)" (click)="updateTotalPrice(item.Price , itemCount.value)" (click)="getCatData(item.Name , item.Price , itemCount.value)">BUY</button></td>
+    </tr>
+  </tbody>
+</table>

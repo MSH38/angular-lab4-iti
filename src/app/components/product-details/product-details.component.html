@@ -1,0 +1,18 @@
+<div class="card border-primary p-3" style="width: 500px;">
+  <img class="card-img-top mb-3" [src]="product?.Img" alt="">
+  <h2 class="card-name">Name: {{product?.Name}}</h2>
+  <div class="card-body">
+    <h4 class="card-title">Price: {{product?.Price}}</h4>
+    <p class="card-text">Quantity: {{product?.Quantity}}</p>
+  </div>
+  <div class="btn-group">
+    <button class="btn btn-warning" (click)="PrevProduct()" [disabled]="currentPrdID == prdIDList[0]">Prev</button>
+    <button class="btn btn-danger" (click)="goback()">Back</button>
+    <button class="btn btn-primary" (click)="nextProduct()"  [disabled]="currentPrdID == prdIDList[prdIDList.length-1]">Next</button>
+  </div>
+</div>
+
+<form class="mt-5">
+    Search By Name: <input type="search" class="form-control w-25 mb-2" name="search" #searchInp>
+    <button class="btn btn-success" (click)="searchByName(searchInp.value)">Search</button>
+</form>

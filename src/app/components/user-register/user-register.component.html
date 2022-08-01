@@ -1,0 +1,48 @@
+<form class="row g-3" [formGroup]="userFormGroup">
+    <div class="col-md-6">
+        <label for="fullName" class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="fullName" formControlName="fullName" [class.is-valid]="fullName?.valid" [class.is-invalid]="fullName?.invalid">
+        <div class="alert alert-danger" [hidden]="fullName?.valid || fullName?.untouched">
+            <small *ngIf="fullName?.errors?.['required']">
+                The Name is Required
+            </small>
+            <small *ngIf="fullName?.errors?.['minLength']">
+                The Name is must be 5 letters at least
+            </small>
+        </div>
+    </div>
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Email</label>
+      <input type="email" class="form-control" id="inputEmail4" formControlName="email" [class.is-valid]="fullName?.valid" [class.is-invalid]="fullName?.invalid">
+    </div>
+    <div class="col-12">
+      <label for="inputPassword4" class="form-label">Password</label>
+      <input type="password" class="form-control" id="inputPassword4" formControlName="password" [class.is-valid]="fullName?.valid" [class.is-invalid]="fullName?.invalid">
+    </div>
+    <div formArrayName="mobileNo">
+        <div class="col-12" *ngFor="let mob of mobileNo.controls ; let i = index">
+            <label for="mobileNo{{i+1}}" class="form-label">Mobile No.{{i+1}}</label>
+            <input type="number" class="form-control" name="usrMobile{{i+1}}" id="mobileNo{{i+1}}" [formControlName] ="i" [class.is-valid]="fullName?.valid" [class.is-invalid]="fullName?.invalid">
+            <button class="btn btn-primary mt-1" (click)="addMobileNo()" *ngIf="mob.value && i == mobileNo.controls.length-1">+</button>
+        </div>
+    </div>
+    <div class="col-12" formGroupName="address">
+      <label class="form-label mb-3">Address</label>
+        <div>
+            <label for="inputAddress" class="form-label">City</label>
+            <input type="text" class="form-control" id="inputAddress" formControlName="city" [class.is-valid]="fullName?.valid" [class.is-invalid]="fullName?.invalid">
+        </div>
+        <div>
+            <label for="inputAddress2" class="form-label">Street</label>
+            <input type="text" class="form-control" id="inputAddress2" formControlName="street" [class.is-valid]="fullName?.valid" [class.is-invalid]="fullName?.invalid">
+        </div>
+        <div>
+            <label for="postalCode" class="form-label">Postal Code</label>
+            <input type="text" class="form-control" id="postalCode" formControlName="postalCode" [class.is-valid]="fullName?.valid" [class.is-invalid]="fullName?.invalid">
+        </div>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary" [disabled]="userFormGroup.invalid">Sign in</button>
+    </div>
+</form>
+  <hr>

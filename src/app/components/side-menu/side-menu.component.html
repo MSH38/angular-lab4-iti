@@ -1,0 +1,11 @@
+<div class="w-75 m-auto mb-5">
+  <label for="nationalIdBirthYear" class="mb-3 text-danger fw-bold fs-5">Enter Your National Id</label>
+  <input type="text" class="form-control mb-3" id="nationalIdBirthYear" [(ngModel)]="userNationalId">
+  <p class="text-primary fw-bold fs-5">Birth Date: {{userNationalId | nationalIDBirthYear}}</p>
+</div>
+
+<div class="w-75 m-auto mt-5">
+  <label for="nationalIdBirthYear" class="mb-3 text-danger fw-bold fs-5">Enter Number</label>
+  <input type="text" class="form-control mb-3" id="nationalIdBirthYear" [(ngModel)]="userCreditCardNumber">
+  <p class="text-primary fw-bold fs-5">Credit Card Number: <br>{{userCreditCardNumber | creditCardNumber}}</p>
+</div>
