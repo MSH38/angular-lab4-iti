@@ -1,5 +1,5 @@
-
-<form #newProductForm="ngForm" (ngSubmit)="addNewProduct()">
+<div class="container-fluid w-50">
+  <form #newProductForm="ngForm" (ngSubmit)="addNewProduct()" method="POST" >
     <div class="mb-3">
       <label for="newProductName" class="form-label">Product Name</label>
       <input #newProductNameInput="ngModel"  type="text" class="form-control" name="newProductName"
@@ -35,6 +35,8 @@
       </select>
     </div>
 
-    <button type="submit" class="btn btn-success" [disabled]="newProductForm.invalid">Add New Product</button>
+    <button type="submit" class="btn btn-outline-primary w-100" [disabled]="newProductForm.invalid">Add Product</button>
    </form>
+</div>
+
   

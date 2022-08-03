@@ -15,7 +15,7 @@ export class AddProductComponent implements OnInit {
   newProduct:IProduct = {} as IProduct;
 
   constructor(private APIProductService:ProductApiService, private router:Router) {
-    this.APIProductService.getAllCategories().subscribe(productList=>{
+    this.APIProductService.getAllCategories().subscribe((productList: ICateogry[])=>{
       this.catList = productList
     })
   }
@@ -25,9 +25,6 @@ export class AddProductComponent implements OnInit {
 
 
   addNewProduct(){
-    // let testProduct:IProduct = {
-    //   ID:1000 , Name:'Redmi' , Quantity:10 , Price:5000 , Img:'../../../assets/Natural.jpg' , CateogryID:1
-    // }
 
     this.APIProductService.AddProduct(this.newProduct).subscribe({
       next:(product)=>{

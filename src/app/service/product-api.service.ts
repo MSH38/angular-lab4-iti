@@ -20,27 +20,22 @@ export class ProductApiService {
     };
   }
 
-  //Function Get All Products
   getAllProducts():Observable<IProduct[]>{
     return this.httpClient.get<IProduct[]>(`${environment.baseURL}/products`);
   }
 
-  //Function Get All Categories
   getAllCategories():Observable<IProduct[]>{
     return this.httpClient.get<IProduct[]>(`${environment.baseURL}/categories`);
   }
 
-  //Function Get Products By CatID
   getProductsByCatID(CatID:number):Observable<IProduct[]>{
     return this.httpClient.get<IProduct[]>(`${environment.baseURL}/products?CateogryID=${CatID}`);
   }
 
-  //Function Get Product By ID
   getProductByID(productID:number):Observable<IProduct>{
     return this.httpClient.get<IProduct>(`${environment.baseURL}/products/${productID}`);
   }
 
-  //Function Add Product Using Form
   AddProduct(newProduct:IProduct):Observable<IProduct>{
     return this.httpClient.post<IProduct>(`${environment.baseURL}/products`,
     JSON.stringify(newProduct),

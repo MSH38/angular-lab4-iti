@@ -21,12 +21,10 @@ export class ProductService {
     ]
   }
 
-  //Function return all product
   getAllProducts():IProduct[]{
     return this.productList;
   }
 
-  //Function get products with CateogryID
   getProductByCateogryID(CateogryID:number):IProduct[]{
     if(CateogryID == 0){
       return this.getAllProducts();
@@ -37,12 +35,10 @@ export class ProductService {
     }
   }
 
-  //Function get products by id
   getProductByID(productID:number):IProduct|undefined{
     return this.productList.find(item=>item.ID == productID);
   }
 
-  //Function search products by name
   searchProductByName(productName:string):IProduct|undefined{
     return this.productList.find(item=>item.Name == productName);
   }
